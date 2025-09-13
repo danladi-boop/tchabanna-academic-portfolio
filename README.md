@@ -1,4 +1,4 @@
-# Portfolio Académique - Marwane Tchabanna
+# Portfolio Académique - Marwane TCHABANNA KOUDJOWOU
 
 Bienvenue sur mon **portfolio académique** ! Ce site a pour but de **partager mes travaux** dans le domaine de la modélisation et de l'analyse numérique, afin de favoriser les échanges, les discussions et l'enrichissement mutuel.
 
