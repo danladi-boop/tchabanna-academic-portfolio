@@ -97,11 +97,263 @@ plt.plot(history[:,0], history[:,1], 'o-', color='red')
 plt.title("Trajectoire de la descente de gradient")
 plt.show()
   </code></pre>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CComparaison : Descente de Gradient</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .graph {
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .explanation {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Optimisation en 1D : Descente de Gradient</h1>
 
-</body>
-</html>
+        <div class="explanation">
+            <h2>Description</h2>
+            <p>
+                Nous analysons la fonction \( J(x) = \langle x, y \rangle \exp(-\|x\|^2) \) en 1D le long de la direction de \( y = (1, 2) \).
+                La fonction en 1D est \( J_{1d}(t) = t \cdot \|y\| \cdot \exp(-t^2) \).
+                Les minima locaux théoriques sont \( t_{\text{opt}} = \pm \frac{\|y\|}{\sqrt{2}} \).
+            </p>
+        </div>
 
-        </section>
-    </main>
+        <div class="graph" id="functionPlot"></div>
+
+        <div class="graph" id="gradientDescentPlot"></div>
+
+        <div class="explanation">
+            <h2>Explications</h2>
+            <p>
+                - **Fonction en 1D** : La courbe montre \( J_{1d}(t) \) avec ses deux minima locaux.
+                - **Descente de Gradient** : La trajectoire montre comment \( t \) converge vers un minimum local à partir d'un point initial perturbé.
+                - **Points Optimaux** : Les points rouges et bleus indiquent les minima théoriques.
+            </p>
+        </div>
+
+        <h2>Code Python</h2>
+        <p>Voici le code Python utilisé pour générer les résultats :</p>
+        <pre><code class="python">
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Paramètres
+y = np.array([1.0, 2.0])
+norm_y = np.linalg.norm(y)
+
+# Définition de la fonction J_1d(t) = t * ||y|| * exp(-t^2)
+def J_1d(t):
+    return t * norm_y * np.exp(-t**2)
+
+# Dérivée analytique de J_1d(t)
+def dJ_1d(t):
+    return norm_y * np.exp(-t**2) * (1 - 2 * t**2)
+
+# Descente de gradient en 1D
+def gradient_descent(t0, learning_rate=0.01, epsilon=1e-6, max_iter=1000):
+    t = t0
+    trajectory = [t]
+    for niter in range(max_iter):
+        grad = dJ_1d(t)
+        if abs(grad) < epsilon:
+            print(f"Convergence atteinte après {niter} itérations.")
+            break
+        t -= learning_rate * grad
+        trajectory.append(t)
+    return np.array(trajectory)
+
+# Solutions théoriques : t_opt = +/- ||y|| / sqrt(2)
+topt1 = norm_y / np.sqrt(2)
+topt2 = -norm_y / np.sqrt(2)
+
+print("Solutions théoriques :")
+print("topt1 =", topt1)
+print("topt2 =", topt2)
+
+# Descente de gradient à partir d'un point initial perturbé
+perturbation = 0.5
+tinit = topt1 + perturbation
+
+trajectory = gradient_descent(tinit, learning_rate=0.01, epsilon=1e-6)
+
+# Tracer la fonction J_1d(t)
+t_vals = np.linspace(-3, 3, 400)
+J_vals = J_1d(t_vals)
+
+plt.figure(figsize=(12, 5))
+
+plt.subplot(1, 2, 1)
+plt.plot(t_vals, J_vals, label='J_1d(t)')
+plt.scatter(topt1, J_1d(topt1), c='red', label='topt1')
+plt.scatter(topt2, J_1d(topt2), c='blue', label='topt2')
+plt.xlabel('t')
+plt.ylabel('J_1d(t)')
+plt.title('Fonction J_1d(t)')
+plt.legend()
+plt.grid(True)
+
+plt.subplot(1, 2, 2)
+plt.plot(t_vals, J_vals, label='J_1d(t)')
+plt.plot(trajectory, J_1d(trajectory), 'ro-', label='Trajectoire')
+plt.scatter(tinit, J_1d(tinit), c='green', label='Point initial')
+plt.scatter(trajectory[-1], J_1d(trajectory[-1]), c='red', label='Minimum trouvé')
+plt.scatter(topt1, J_1d(topt1), c='blue', label='topt1')
+plt.scatter(topt2, J_1d(topt2), c='cyan', label='topt2')
+plt.xlabel('t')
+plt.ylabel('J_1d(t)')
+plt.title('Trajectoire de la descente de gradient en 1D')
+plt.legend()
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
+        </code></pre>
+    </div>
+
+    <script>
+        // Paramètres
+        const y = [1.0, 2.0];
+        const norm_y = Math.sqrt(y[0] * y[0] + y[1] * y[1]);
+        const topt1 = norm_y / Math.sqrt(2);
+        const topt2 = -norm_y / Math.sqrt(2);
+
+        // Fonction J_1d(t)
+        function J_1d(t) {
+            return t * norm_y * Math.exp(-t * t);
+        }
+
+        // Dérivée analytique de J_1d(t)
+        function dJ_1d(t) {
+            return norm_y * Math.exp(-t * t) * (1 - 2 * t * t);
+        }
+
+        // Descente de gradient en 1D
+        function gradientDescent(t0, learning_rate, epsilon, max_iter) {
+            let t = t0;
+            let trajectory = [t];
+            for (let niter = 0; niter < max_iter; niter++) {
+                const grad = dJ_1d(t);
+                if (Math.abs(grad) < epsilon) {
+                    console.log(`Convergence atteinte après ${niter} itérations.`);
+                    break;
+                }
+                t -= learning_rate * grad;
+                trajectory.push(t);
+            }
+            return trajectory;
+        }
+
+        // Générer les données pour les graphiques
+        const t_vals = [];
+        const J_vals = [];
+        for (let t = -3; t <= 3; t += 0.01) {
+            t_vals.push(t);
+            J_vals.push(J_1d(t));
+        }
+
+        const perturbation = 0.5;
+        const tinit = topt1 + perturbation;
+        const trajectory = gradientDescent(tinit, 0.01, 1e-6, 1000);
+
+        // Tracer la fonction J_1d(t)
+        const functionTrace = {
+            x: t_vals,
+            y: J_vals,
+            type: 'scatter',
+            mode: 'lines',
+            name: 'J_1d(t)',
+            line: {color: 'blue'}
+        };
+
+        const opt1Trace = {
+            x: [topt1],
+            y: [J_1d(topt1)],
+            type: 'scatter',
+            mode: 'markers',
+            name: 'topt1',
+            marker: {color: 'red', size: 10}
+        };
+
+        const opt2Trace = {
+            x: [topt2],
+            y: [J_1d(topt2)],
+            type: 'scatter',
+            mode: 'markers',
+            name: 'topt2',
+            marker: {color: 'blue', size: 10}
+        };
+
+        const functionData = [functionTrace, opt1Trace, opt2Trace];
+        const functionLayout = {
+            title: 'Fonction J_1d(t)',
+            xaxis: {title: 't'},
+            yaxis: {title: 'J_1d(t)'}
+        };
+        Plotly.newPlot('functionPlot', functionData, functionLayout);
+
+        // Tracer la descente de gradient
+        const descentTrace = {
+            x: trajectory,
+            y: trajectory.map(t => J_1d(t)),
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Trajectoire',
+            line: {color: 'red'},
+            marker: {color: 'red', size: 8}
+        };
+
+        const initTrace = {
+            x: [tinit],
+            y: [J_1d(tinit)],
+            type: 'scatter',
+            mode: 'markers',
+            name: 'Point initial',
+            marker: {color: 'green', size: 10}
+        };
+
+        const descentData = [functionTrace, descentTrace, initTrace, opt1Trace, opt2Trace];
+        const descentLayout = {
+            title: 'Trajectoire de la descente de gradient en 1D',
+            xaxis: {title: 't'},
+            yaxis: {title: 'J_1d(t)'}
+        };
+        Plotly.newPlot('gradientDescentPlot', descentData, descentLayout);
+    </script>
+    <script>hljs.highlightAll();</script>
 </body>
 </html>
