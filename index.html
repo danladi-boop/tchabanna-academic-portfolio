@@ -3,99 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Marwane TCHABANNA KOUDJOWOU</title>
+    <title>Portfolio Académique - Marwane TCHABANNA KOUDJOWOU</title>
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/MathJax.js"></script>
 </head>
 <body>
-    <header style="background-image: url('image/background.jpg');">
-        <div class="header-content">
-            <h1>Marwane TCHABANNA KOUDJOWOU</h1>
-            <p>Étudiant en Master  - Modélisation et Analyse Numérique à la faculté des Sciences de Montpellier</p>
+
+<header>
+    <h1>Marwane TCHABANNA KOUDJOWOU</h1>
+    <p>Master 1 Modélisation et Analyse Numérique — Université de Montpellier</p>
+</header>
+
+<div class="container">
+    <div class="status-badge">Projet en cours : Jalon 1</div>
+    
+    <h2>Modeling Red Blood Cell Dynamics using PINNs 🩸💻</h2>
+    <p class="intro">
+        This research project focuses on leveraging <strong>Physics-Informed Neural Networks (PINNs)</strong> to infer the mechanical properties of Red Blood Cells (RBCs) based on their dynamics under flow conditions.
+    </p>
+
+    <section class="supervision-box">
+        <h3>👨‍🏫 Supervision / Direction</h3>
+        <p><strong>Advised by:</strong></p>
+        <ul class="prof">
+            <li>Vanessa Lleras (Associate Professor, University of Montpellier / IMAG)</li>
+            <li>Simon Mendez (CNRS Research Scientist / IES)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>🔬 Scientific Context</h2>
+        <p>
+            Red blood cell deformability is a critical biomarker of health. Pathologies such as sickle cell anemia or malaria modify the mechanical properties of the cell membrane. This project aims to develop a non-invasive diagnostic tool by using AI to solve inverse problems in biophysics.
+        </p>
+    </section>
+
+    <section>
+        <h2>🎯 Step 1: The Keller and Skalak (KS) Model</h2>
+        <p>
+            The first milestone is to implement and solve the foundational <strong>Keller and Skalak (1982)</strong> model. It describes the motion of a fluid ellipsoid with a fixed shape in a simple shear flow.
+        </p>
+        <ul>
+            <li><strong>Tumbling :</strong> La cellule tourne comme un corps rigide.</li>
+            <li><strong>Tank-treading :</strong> La membrane tourne autour du cytoplasme interne.</li>
+        </ul>
+
+        <h3>Numerical Objectives</h3>
+        <ul>
+            <li><strong>PINNs Implementation:</strong> Integration of ODEs into the neural network loss function.</li>
+            <li><strong>Parameter Inference:</strong> Recovery of viscosity ratios and shear rates.</li>
+            <li><strong>Validation:</strong> Benchmarking against exact analytical solutions (Section 6, Keller 1982).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>🛠️ Tech Stack</h2>
+        <div class="tech-stack">
+            <span class="tech-tag">Python 🐍</span>
+            <span class="tech-tag">DeepXDE</span>
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">NumPy</span>
+            <span class="tech-tag">Matplotlib</span>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="introduction">
-            <div class="intro-content">
-                <h2>À Propos de Moi</h2>
-                <!-- Photo de profil réduite -->
-                <img src="image/profile_pic.jpg" alt="Marwane Tchabanna" class="profile-pic" width="200">
-                <p>
-                    Je suis Marwane TCHABANNA dit KOUDJOWOU, originaire du Togo. Je suis titulaire d'une licence en Mathématiques Appliquées à la Pédagogie (LMSP) à l'Université des Sciences et Techniques de Kara (2019-2020) et d'une licence en Mathématiques Générales à l'Université de Montpellier (2024-2025).
-                </p>
-                <p>
-                     Je fus Enseignant des sciences physiques au Lycée Sainte Marie de Sokodé pour les classes de Terminale D, Première D, Seconde CD et A4 durant l'année académique 2020-2021. J'ai également été délégué général de la Faculté des Sciences de l'Université de Kara (FasT) de 2018 à 2021.
-                </p>
-            </div>
-        </section>
+    <section>
+        <h2>📂 Project Architecture</h2>
+        <div class="file-tree">
+tchabanna-academic-portfolio/<br>
+├── index.html          # Cette page interface<br>
+├── style.css           # Design du portfolio<br>
+├── docs/               # Notes théoriques (KS 1982, Abkarian 2016)<br>
+├── src/                # Scripts Python (PINNs solver)<br>
+└── notebook/           # Validation & Graphiques
+        </div>
+    </section>
 
-        <section class="philosophy">
-            <h2>Ma Philosophie</h2>
-            <p>
-                <em>"J'ai une dette envers la nature, et j'entends la payer en développant des modèles mathématiques pour mieux écouter, comprendre et œuvrer pour son bien-être."</em>
-            </p>
-            <p>
-                <em>"Je veux être comme l'eau : rendre propre, rafraîchir, apaiser, éteindre le feu, et accumuler des connaissances comme la mer, qui garde tant de mystères et de richesses."</em>
-            </p>
-        </section>
+    <div class="lang-split">
+        <div class="lang-card">
+            <h3>🚀 Organisation (FR)</h3>
+            <ul class="structure-list">
+                <li>📂 <code>docs/</code> : Synthèses théoriques des modèles.</li>
+                <li>📂 <code>src/</code> : Résolution des systèmes d'EDO par PINNs.</li>
+                <li>📂 <code>notebook/</code> : Comparaisons vs solutions analytiques.</li>
+            </ul>
+        </div>
+        <div class="lang-card">
+            <h3>🚀 Structure (EN)</h3>
+            <ul class="structure-list">
+                <li>📂 <code>docs/</code> : Theoretical notes on KS & Abkarian models.</li>
+                <li>📂 <code>src/</code> : PINN implementation for ODE systems.</li>
+                <li>📂 <code>notebook/</code> : Benchmarking against exact solutions.</li>
+            </ul>
+        </div>
+    </div>
 
-        <section class="courses">
-            <h2>Mes Cours et Travaux</h2>
-            <div class="course-grid">
-                <div class="course-card">
-                    <img src="image/math_symbols.png" alt="Optimisation">
-                    <h3>Optimisation</h3>
-                    <p>Travaux et projets sur les méthodes d'optimisation, algorithmes et applications pratiques.</p>
-                    <a href="travaux/optimisation/" class="button">Voir les projets</a>
-                    <a href="pdf/optimisation/projet1.pdf" class="button" download>Télécharger le PDF</a>
-                </div>
-                <div class="course-card">
-                    <img src="image/math_symbols.png" alt="Analyse Numérique">
-                    <h3>Analyse Numérique</h3>
-                    <p>Études et projets sur les méthodes numériques pour résoudre des problèmes mathématiques.</p>
-                    <a href="travaux/analyse_numerique/" class="button">Voir les projets</a>
-                    <a href="pdf/analyse_numerique/projet2.pdf" class="button" download>Télécharger le PDF</a>
-                </div>
-                <div class="course-card">
-                    <img src="image/math_symbols.png" alt="Analyse Fonctionnelle">
-                    <h3>Analyse Fonctionnelle</h3>
-                    <p>Recherches et applications en analyse fonctionnelle, espaces vectoriels et opérateurs.</p>
-                    <a href="travaux/analyse_fonctionnelle/" class="button">Voir les projets</a>
-                    <a href="pdf/analyse_fonctionnelle/projet3.pdf" class="button" download>Télécharger le PDF</a>
-                </div>
-                <div class="course-card">
-                    <img src="image/math_symbols.png" alt="Équations aux Dérivées Partielles">
-                    <h3>Équations aux Dérivées Partielles (EDP)</h3>
-                    <p>Projets sur la résolution des EDP, applications en physique et ingénierie.</p>
-                    <a href="travaux/edp/" class="button">Voir les projets</a>
-                    <a href="pdf/edp/projet4.pdf" class="button" download>Télécharger le PDF</a>
-                </div>
-                <div class="course-card">
-                    <img src="image/math_symbols.png" alt="Géométrie Différentielle">
-                    <h3>Géométrie Différentielle</h3>
-                    <p>Travaux sur les variétés différentielles, courbures et applications.</p>
-                    <a href="travaux/geometrie_differentielle/" class="button">Voir les projets</a>
-                    <a href="pdf/geometrie_differentielle/projet5.pdf" class="button" download>Télécharger le PDF</a>
-                </div>
-            </div>
-        </section>
+    <a href="https://github.com/danladi-boop/tchabanna-academic-portfolio" class="github-link">Voir le code sur GitHub →</a>
+</div>
 
-        <section class="projects">
-            <h2>Projets Personnels</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="image/nature.jpg" alt="Projet Agroalimentaire">
-                    <h3>Projet Agroalimentaire</h3>
-                    <p>Initiative pour améliorer les pratiques agroalimentaires au Togo, en utilisant des modèles analytiques.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+<footer>
+    <p>© 2026 Marwane TCHABANNA KOUDJOWOU - M1 Modélisation et Analyse Numérique</p>
+    <p>Université de Montpellier | IMAG | IES</p>
+</footer>
 
-    <footer>
-        <p>© 2025 - Marwane Tchabanna</p>
-    </footer>
 </body>
 </html>
 
