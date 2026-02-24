@@ -1,12 +1,40 @@
 # Portfolio Académique - Marwane TCHABANNA KOUDJOWOU
-
-Bienvenue sur mon **portfolio académique** ! Ce site a pour but de **partager mes travaux** dans le domaine de la modélisation et de l'analyse numérique, afin de favoriser les échanges, les discussions et l'enrichissement mutuel.
-
+Modeling Red Blood Cell Dynamics using PINNs 🩸💻
+This repository contains my Master 1 research project in Numerical Modeling and Analysis at the University of Montpellier. The core objective is to leverage Physics-Informed Neural Networks (PINNs) to infer the mechanical properties of Red Blood Cells (RBCs) based on their dynamics under flow conditions.
 ---
+## 👨‍🏫 Supervision
+Advised by:
 
-## Objectif
+-Vanessa Lleras (Associate Professor, University of Montpellier / IMAG)
 
-Mon objectif est de **contribuer à la communauté académique et scientifique** en rendant accessibles mes projets, recherches et réflexions. Que tu sois étudiant, enseignant, chercheur ou simplement passionné par les mathématiques appliquées, j'espère que ces travaux pourront t'inspirer, t'aider ou même susciter des collaborations.
+-Simon Mendez (CNRS Research Scientist / IES)
+## 🔬 Scientific Context
+Red blood cell deformability is a critical biomarker of health. Pathologies such as sickle cell anemia or malaria modify the mechanical properties of the cell membrane, making them less capable of circulating through microvessels. This project aims to develop a non-invasive diagnostic tool by using AI to solve inverse problems in biophysics
+## 🎯 Step 1: The Keller and Skalak (KS) Model
+The first milestone of this project is to implement and solve the foundational Keller and Skalak (1982) model
+Model Overview
+The KS model describes the motion of a fluid ellipsoid with a fixed shape in a simple shear flow. It successfully reproduces two essential motion regimes:
+  1-Tumbling: The cell rotates as a rigid body
+  2-Tank-treading: The membrane rotates around the internal cytoplasm while the cell maintains a stable orientation
+Numerical Objectives
+
+ -PINNs Implementation: Translate the system of coupled Ordinary Differential Equations (ODEs) from the KS model into the loss function of a neural network.
+ 
+ -Parameter Inference: Train the network to recover physical parameters (such as viscosity ratios or shear rates) from angular trajectory data.
+ 
+ -Validation: Benchmark the PINN results against the analytical solutions provided in Section 6 of the original Keller (1982) paper.
+##  🛠️ Tech Stack
+- Python 🐍
+
+DeepXDE / PyTorch (for PINN implementation)
+
+NumPy / Matplotlib (for numerical analysis and visualization)
+
+## 📚 Key References
+Keller, S. R., & Skalak, R. (1982). Motion of a 2D fluid ellipsoid in a 2D shear flow.
+
+Abkarian, M., & Viallat, A. (2016). On The Importance Of Red Blood Cells Deformability In Blood Flow. Chapter 1.
+
 
 ---
 
