@@ -38,40 +38,29 @@ Abkarian, M., & Viallat, A. (2016). On The Importance Of Red Blood Cells Deforma
 
 ---
 
-## Organisation du Portfolio
+tchabanna-academic-portfolio/
+├── README.md               <-- Présentation générale (ce qu'on a rédigé)
+├── LICENSE                 <-- Licence (ex: MIT) pour protéger votre code
+├── docs/                   <-- Bibliographie et notes théoriques
+│   ├── notes_keller_skalak.md
+│   └── resume_abkarian_2016.md
+├── src/                    <-- Scripts Python (le cœur du projet)
+│   ├── keller_skalak_analytical.py  <-- Solutions de référence
+│   └── rbc_pinn_solver.py           <-- Votre modèle PINN
+├── data/                   <-- Données synthétiques ou expérimentales
+├── notebook/               <-- Expérimentations interactives (Jupyter)
+│   └── validation_pinn_vs_analytical.ipynb
+└── assets/                 <-- Images, schémas et animations
+    └── rbc_motion.gif
+## 🚀 Organisation du Projet
 
-- **`index.html`** : Page d'accueil du portfolio, présentant une vue d'ensemble de mes travaux.
-- **`style.css`** : Feuille de style pour le design du site.
-- **`/travaux/`** : Dossier contenant mes projets académiques, organisés par thème :
-  - Optimisation
-  - Analyse Numérique
-  - Analyse Fonctionnelle
-  - Équations aux Dérivées Partielles (EDP)
-  - Géométrie Différentielle
-- **`/pdf/`** : Dossier contenant les versions PDF de mes travaux pour un accès facile et une lecture hors ligne.
-
+* **[docs/](./docs)** : Synthèses théoriques des modèles de Keller-Skalak (1982) et Abkarian (2016).
+* **[src/](./src)** : Implémentation des Physics-Informed Neural Networks (PINNs) pour la résolution des systèmes d'EDO.
+* **[notebook/](./notebook)** : Comparaisons graphiques entre les prédictions numériques et les solutions analytiques exactes.
 ---
 
-## Comment Utiliser ce Portfolio ?
+## 🚀 Project Structure
 
-- **Navigue** à travers les projets pour découvrir mes travaux.
-- **Télécharge** les PDFs pour une lecture détaillée.
-- **Contacte-moi** pour toute question, suggestion ou opportunité de collaboration.
-
----
-
-## Philosophie
-
-> *"J'ai une dette envers la nature et la communauté académique. Je souhaite la payer en partageant mes connaissances, en écoutant et en apprenant des autres pour œuvrer ensemble au bien-être et à l'avancement de la science."*
-
----
-
-## Contact
-
-Pour toute question, suggestion ou collaboration, n'hésitez pas à me contacter :
-- Email : marwane.tchabanna@etu.umontpellier.fr
-- GitHub : [danladi-boop](https://github.com/danladi-boop)
-- Site : https://danladi-boop.github.io/tchabanna-academic-portfolio/
----
-
-Merci de visiter mon portfolio, et j'espère que ces travaux pourront t'être utiles !
+docs/: Theoretical syntheses and technical notes on the Keller-Skalak (1982) and Abkarian (2016) models. This section details the derivation of the coupled ODEs and the physical meaning of the parameters.
+src/: Core source code including the implementation of Physics-Informed Neural Networks (PINNs) to solve the system of Ordinary Differential Equations (ODEs).
+notebook/: Interactive Jupyter notebooks for data visualization and benchmarking. These contain quantitative comparisons between the PINN predictions and the exact analytical solutions provided in the literature
